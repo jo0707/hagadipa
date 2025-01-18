@@ -41,14 +41,14 @@
         </div>
 
         <div class="px-6 mt-6">
-            <UCarousel v-slot="{ item }" :items="promos" :ui="{ item: 'basis-full' }" 
+            <UCarousel v-slot="{ item }" :items="promos" :ui="{ item: 'basis-full' }"
                 class="rounded-lg overflow-hidden">
                 <img :src="item.image" draggable="false" class=" shadow w-full">
             </UCarousel>
         </div>
 
-        <div class="px-6 mt-6">
-            <div class="flex justify-between items-center">
+        <div class="pl-6 mt-6">
+            <div class="flex justify-between items-center mr-6">
                 <h2 class="font-semibold text-xl">Terdekat dari lokasi kamu</h2>
                 <UButton icon="mdi:arrow-right" class="text-black" variant="ghost" />
             </div>
@@ -68,7 +68,8 @@
                                 {{ item.location }}
                             </div>
                             <div class="flex items-center justify-between mt-2">
-                                <div class="text-sm text-gray-500">{{ item.duration }} min · {{ item.distance }} km</div>
+                                <div class="text-sm text-gray-500">{{ item.duration }} min · {{ item.distance }} km
+                                </div>
                                 <div class="flex items-center text-yellow-500">
                                     <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
@@ -84,12 +85,33 @@
             </UCarousel>
         </div>
 
+        <div class="pl-6 mt-6">
+            <div class="flex justify-between items-center mr-6">
+                <h2 class="font-semibold text-xl">Jelajah kabupaten di Lampung</h2>
+                <UButton icon="mdi:arrow-right" class="text-black" variant="ghost" />
+            </div>
+
+            <UCarousel class="mt-2" :items="exploreDistrict" v-slot="{ item }" :ui="{ item: 'basis-3/4' }">
+                <div class="max-w-sm mx-auto rounded-xl shadow-md overflow-hidden relative mr-2">
+                    <img :src="item.image" :alt="item.name" class="w-full h-64 object-cover">
+                    <div class="w-full absolute bottom-0 text-white p-4 bg-gradient-to-t from-black/50 to-transparent">
+                        <h4 class="font-semibold">Jelajah</h4>
+                        <div class="flex gap-2">
+                            <h3 class="font-bold">{{ item.name }}</h3>
+                            <UIcon name="mdi:chevron-right" size="24" class="text-white" />
+                        </div>
+                    </div>
+                </div>
+            </UCarousel>
+        </div>
+
         <div class="mt-16">e</div>
     </div>
 </template>
 
 <script setup lang="ts">
 import type { Destination } from '~/types/Destination'
+import type { District } from '~/types/District'
 
 definePageMeta({
     title: 'Home',
@@ -173,6 +195,7 @@ const promos = [
 
 const nearestDestination: Destination[] = [
     {
+        id: 1,
         name: "Pantai Mutun",
         image: "/img/pantai.jpg",
         location: "Pesawaran",
@@ -183,6 +206,7 @@ const nearestDestination: Destination[] = [
         distance: 3.7
     },
     {
+        id: 2,
         name: "Krakatau Park",
         image: "img/krakataupark.png",
         location: "Bakauheni",
@@ -193,6 +217,7 @@ const nearestDestination: Destination[] = [
         distance: 8
     },
     {
+        id: 3,
         name: "Pahawang Island",
         image: "/img/pantai.jpg",
         location: "Pesawaran",
@@ -203,6 +228,7 @@ const nearestDestination: Destination[] = [
         distance: 25
     },
     {
+        id: 4,
         name: "Way Kambas National Park",
         image: "/img/pantai.jpg",
         location: "Lampung Timur",
@@ -213,6 +239,7 @@ const nearestDestination: Destination[] = [
         distance: 60
     },
     {
+        id: 5,
         name: "Kiluan Bay",
         image: "/img/pantai.jpg",
         location: "Tanggamus",
@@ -221,6 +248,24 @@ const nearestDestination: Destination[] = [
         price: 130,
         duration: 4,
         distance: 40
+    },
+]
+
+const exploreDistrict: District[] = [
+    {
+        id: 1,
+        name: "Lampung Timur",
+        image: "/img/pantai.jpg", // Replace with a real URL or use undefined
+    },
+    {
+        id: 2,
+        name: "Metro",
+        image: "/img/pantai.jpg", // Replace with a real URL or use undefined
+    },
+    {
+        id: 3,
+        name: "Lampung Selatan",
+        image: '/img/pantai.jpg', // No image provided
     },
 ]
 </script>
