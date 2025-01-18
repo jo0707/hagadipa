@@ -142,8 +142,8 @@
                 </div>
             </UCarousel>
         </div>
-
-        <div class="mt-16">e</div>
+        
+        
     </div>
 </template>
 
