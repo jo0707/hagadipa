@@ -10,4 +10,9 @@
 .radial-bg {
   background: radial-gradient(#DAF7F9, #FFFFFF);
 }
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 </style>
