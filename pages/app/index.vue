@@ -53,11 +53,12 @@
                 <UButton icon="mdi:arrow-right" class="text-black" variant="ghost" />
             </div>
 
-            <UCarousel :items="nearestDestination" v-slot="{ item }" :ui="{ item: 'basis-3/4 lg:basis-1/2' }">
-                <div class="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden relative mr-2">
-                    <img :src="item.image" :alt="item.name" class="w-full h-72 object-cover">
+            <UCarousel :items="nearestDestination" v-slot="{ item }"
+                :ui="{ item: 'basis-3/4 lg:basis-1/2 snap-align-none' }">
+                <div class="rounded-xl shadow-md overflow-hidden relative mr-2 h-72 w-full bg-cover bg-center bg-no-repeat"
+                    :style="`background-image: url('${item.image}')`">
                     <div class="w-full absolute bottom-0">
-                        <div class="m-2 p-4  bg-white rounded-xl">
+                        <div class="m-2 p-4 bg-white rounded-lg shadow">
                             <h3 class="text-lg font-bold text-gray-800">{{ item.name }}</h3>
                             <div class="text-sm text-gray-600 flex items-center">
                                 <svg class="w-4 h-4 text-green-500 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -111,7 +112,7 @@
                 <UButton icon="mdi:arrow-right" class="text-black" variant="ghost" />
             </div>
 
-            <UCarousel class="mt-2" :items="exploreDistrict" v-slot="{ item }" :ui="{ item: 'basis-3/4' }">
+            <UCarousel class="mt-2" :items="explorehotels" v-slot="{ item }" :ui="{ item: 'basis-3/4' }">
                 <div class="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden relative mr-2">
                     <img :src="item.image" :alt="item.name" class="w-full h-72 object-cover">
                     <div class="w-full absolute bottom-0">
@@ -142,14 +143,13 @@
                 </div>
             </UCarousel>
         </div>
-        
-        
     </div>
 </template>
 
 <script setup lang="ts">
 import type { Destination } from '~/types/Destination'
 import type { District } from '~/types/District'
+import type { Hotel } from '~/types/Hotel'
 
 definePageMeta({
     title: 'Home',
@@ -306,4 +306,41 @@ const exploreDistrict: District[] = [
         image: '/img/pantai.jpg', // No image provided
     },
 ]
+
+const explorehotels: Hotel[] = [
+    {
+        id: 1,
+        name: "Grand Lampung Hotel",
+        image: "https://example.com/images/grand-lampung-hotel.jpg",
+        description: "A luxury hotel in the heart of Bandar Lampung, offering modern amenities and an exceptional view of the city.",
+        price: 500000,
+        location: "Jl. Raden Intan No.21, Bandar Lampung",
+        rating: 4.5,
+        phone: "+62 721 123456",
+        website: "https://grandlampunghotel.com"
+    },
+    {
+        id: 2,
+        name: "Lampung Beach Resort",
+        image: "https://example.com/images/lampung-beach-resort.jpg",
+        description: "A beachfront resort with stunning views of the sea, perfect for a relaxing getaway.",
+        price: 750000,
+        location: "Jl. Trans Sumatera, Pesisir Barat, Lampung",
+        rating: 4.7,
+        phone: "+62 721 654321",
+        website: "https://lampungbeachresort.com"
+    },
+    {
+        id: 3,
+        name: "Taman Gisting Hotel",
+        image: "https://example.com/images/taman-gisting-hotel.jpg",
+        description: "A cozy hotel surrounded by lush greenery, ideal for travelers seeking tranquility.",
+        price: 300000,
+        location: "Jl. Raya Gisting, Tanggamus, Lampung",
+        rating: 4.3,
+        phone: "+62 721 789012",
+        website: "https://tamangingsthotel.com"
+    }
+];
+
 </script>
