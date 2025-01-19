@@ -59,25 +59,21 @@
                     :style="`background-image: url('${item.image}')`">
                     <div class="w-full absolute bottom-0">
                         <div class="m-2 p-4 bg-white rounded-lg shadow">
-                            <h3 class="text-lg font-bold text-gray-800">{{ item.name }}</h3>
-                            <div class="text-sm text-gray-600 flex items-center">
-                                <svg class="w-4 h-4 text-green-500 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17.657 16.657L13.414 12m-2.828 0L6.343 7.343A8 8 0 0112 3v0a8 8 0 015.657 13.657z" />
-                                </svg>
-                                {{ item.location }}
-                            </div>
-                            <div class="flex items-center justify-between mt-2">
-                                <div class="text-sm text-gray-500">{{ item.duration }} min · {{ item.distance }} km
-                                </div>
-                                <div class="flex items-center text-yellow-500">
-                                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l2.42 7.499a1 1 0 00.95.691h7.875c.969 0 1.372 1.24.588 1.81l-6.363 4.556a1 1 0 00-.364 1.118l2.42 7.499c.3.921-.755 1.688-1.54 1.118L12 18.347l-6.363 4.556c-.784.57-1.838-.197-1.539-1.118l2.42-7.499a1 1 0 00-.364-1.118L.318 11.927c-.784-.57-.381-1.81.588-1.81h7.875a1 1 0 00.95-.691l2.42-7.499z" />
-                                    </svg>
+                            <div class="flex place-content-between">
+                                <h3 class="text-lg font-bold text-gray-800 line-clamp-1 text-ellipsis">{{ item.name }}
+                                </h3>
+                                <div
+                                    class="flex gap-1 items-center text-yellow-500 rounded-full border border-gray-300 p-1">
                                     <span class="ml-1 text-gray-800 text-sm font-bold">4.9</span>
+                                    <UIcon name="mdi:star" size="16" class="text-yellow-500" />
+                                </div>
+                            </div>
+                            <div class="text-sm text-gray-600 flex items-center">
+                                <UIcon name="mdi:map-marker" size="16" class="text-primary-500" />
+                                <span>{{ item.location }}</span>
+                            </div>
+                            <div class="flex items-center justify-between mt-3 font-['Poppins']">
+                                <div class="text-sm text-gray-600">{{ item.duration }} min · {{ item.distance }} km
                                 </div>
                             </div>
                         </div>
@@ -112,30 +108,27 @@
                 <UButton icon="mdi:arrow-right" class="text-black" variant="ghost" />
             </div>
 
-            <UCarousel class="mt-2" :items="explorehotels" v-slot="{ item }" :ui="{ item: 'basis-3/4' }">
-                <div class="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden relative mr-2">
-                    <img :src="item.image" :alt="item.name" class="w-full h-72 object-cover">
+            <UCarousel :items="exploreHotels" v-slot="{ item }"
+                :ui="{ item: 'basis-3/4 lg:basis-1/2 snap-align-none' }">
+                <div class="rounded-xl shadow-md overflow-hidden relative mr-2 h-72 w-full bg-cover bg-center bg-no-repeat"
+                    :style="`background-image: url('${item.image}')`">
                     <div class="w-full absolute bottom-0">
-                        <div class="m-2 p-4  bg-white rounded-xl">
-                            <h3 class="text-lg font-bold text-gray-800">{{ item.name }}</h3>
-                            <div class="text-sm text-gray-600 flex items-center">
-                                <svg class="w-4 h-4 text-green-500 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17.657 16.657L13.414 12m-2.828 0L6.343 7.343A8 8 0 0112 3v0a8 8 0 015.657 13.657z" />
-                                </svg>
-                                {{ item.location }}
-                            </div>
-                            <div class="flex items-center justify-between mt-2">
-                                <div class="text-sm text-gray-500">{{ item.duration }} min · {{ item.distance }} km
-                                </div>
-                                <div class="flex items-center text-yellow-500">
-                                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l2.42 7.499a1 1 0 00.95.691h7.875c.969 0 1.372 1.24.588 1.81l-6.363 4.556a1 1 0 00-.364 1.118l2.42 7.499c.3.921-.755 1.688-1.54 1.118L12 18.347l-6.363 4.556c-.784.57-1.838-.197-1.539-1.118l2.42-7.499a1 1 0 00-.364-1.118L.318 11.927c-.784-.57-.381-1.81.588-1.81h7.875a1 1 0 00.95-.691l2.42-7.499z" />
-                                    </svg>
+                        <div class="m-2 p-4 bg-white rounded-lg shadow">
+                            <div class="flex place-content-between">
+                                <h3 class="text-lg font-bold text-gray-800 line-clamp-1 text-ellipsis">{{ item.name }}
+                                </h3>
+                                <div
+                                    class="flex gap-1 items-center text-yellow-500 rounded-full border border-gray-300 p-1">
                                     <span class="ml-1 text-gray-800 text-sm font-bold">4.9</span>
+                                    <UIcon name="mdi:star" size="16" class="text-yellow-500" />
+                                </div>
+                            </div>
+                            <div class="text-sm text-gray-600 flex items-center">
+                                <UIcon name="mdi:map-marker" size="16" class="text-primary-500" />
+                                <span>{{ item.location }}</span>
+                            </div>
+                            <div class="flex items-center justify-between mt-3 font-['Poppins']">
+                                <div class="text-sm text-gray-600">{{ item.duration }} min · {{ item.distance }} km
                                 </div>
                             </div>
                         </div>
@@ -307,22 +300,22 @@ const exploreDistrict: District[] = [
     },
 ]
 
-const explorehotels: Hotel[] = [
+const exploreHotels: Hotel[] = [
     {
         id: 1,
-        name: "Grand Lampung Hotel",
-        image: "https://example.com/images/grand-lampung-hotel.jpg",
+        name: "The Klara Hotel",
+        image: "/img/pantai.jpg",
         description: "A luxury hotel in the heart of Bandar Lampung, offering modern amenities and an exceptional view of the city.",
-        price: 500000,
-        location: "Jl. Raden Intan No.21, Bandar Lampung",
-        rating: 4.5,
+        price: 876463,
+        location: "Bandar Lampung",
+        rating: 4.9,
         phone: "+62 721 123456",
         website: "https://grandlampunghotel.com"
     },
     {
         id: 2,
         name: "Lampung Beach Resort",
-        image: "https://example.com/images/lampung-beach-resort.jpg",
+        image: "/img/pantai.jpg",
         description: "A beachfront resort with stunning views of the sea, perfect for a relaxing getaway.",
         price: 750000,
         location: "Jl. Trans Sumatera, Pesisir Barat, Lampung",
@@ -333,7 +326,7 @@ const explorehotels: Hotel[] = [
     {
         id: 3,
         name: "Taman Gisting Hotel",
-        image: "https://example.com/images/taman-gisting-hotel.jpg",
+        image: "/img/pantai.jpg",
         description: "A cozy hotel surrounded by lush greenery, ideal for travelers seeking tranquility.",
         price: 300000,
         location: "Jl. Raya Gisting, Tanggamus, Lampung",
